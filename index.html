@@ -8,6 +8,7 @@
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://kit.fontawesome.com/0fbf666b4a.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -38,6 +39,44 @@
     <!-- Your Code Here -->
     <!-- You should start doing handlebar stuff here -->
     <!-- Your Code Here -->
+
+    <script id="apartment-template" type="text/x-handlebars-template">
+        {{#if apartmentsList}}
+        <ul>
+          {{#each apartmentsList}}
+            <div class="result">
+                <img src="{{img}}" alt="apartment">
+                <p class="l-price label">price: </p>
+                <p class="price">{{price}}$ </p>
+                <p class="l-addr label">address: </p>
+                <p class="address">{{address}} </p>
+                <p class="l-rooms label">rooms: </p>
+                <p class="rooms">{{rooms}} </p>
+                {{#if parking}}
+                <!-- <div class="parking">Parking avaiable</div> -->
+                <i class="fa-solid fa-square-parking"></i>   
+                {{/if}}
+                {{#if immediate}}
+                <div class="contact">Name: {{contactDetails.name}}--> Mail: {{contactDetails.email}}</div>
+                {{/if}}
+                {{#if features}}
+                <div class="extras">Extra:
+                    <ul>
+                        {{#each features}}
+                            <li>{{ this }}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/if}}
+            </div>
+          {{/each}}
+        </ul>
+        {{/if}}
+        {{# unless apartmentsList}}
+        <div class="no-match">There are no matching apartment for your search!</div>
+        {{/unless}}
+      </script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
